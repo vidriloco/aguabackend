@@ -1,0 +1,13 @@
+<div id="water-points" class="hidden">
+    {% for settlement in settlements %}
+        <div data-id="settlement-{{ settlement.id }}" 
+            data-name="{{ settlement.settlement }}" 
+            data-coordinates-lat="{{ settlement.location.y }}" 
+            data-coordinates-lng="{{ settlement.location.x }}"
+            data-disrupted="{{ settlement.is_atypical_condition  }}"
+            data-source="{{ settlement.supply_zone }}">
+            
+        </div>
+    {% endfor %}
+    {{ settlements|safe }}
+</div>

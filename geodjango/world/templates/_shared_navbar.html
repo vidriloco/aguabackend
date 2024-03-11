@@ -1,0 +1,46 @@
+
+<nav class="navbar bg-dark border-bottom border-body navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Aguas con el agua</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item {% if active_tab == 'disruption' %}active{% endif %}">
+            <a class="nav-link" href="/colonias-afectadas">Colonias afectadas</a>
+          </li>
+          <li class="nav-item {% if active_tab == 'by-source' %}active{% endif %}">
+            <a class="nav-link" href="/fuentes-de-abastecimiento">Fuentes de abastecimiento</a>
+          </li>
+        </ul>
+        <div class="d-flex" role="search">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-warning mr-2" data-bs-toggle="modal" data-bs-target="#legend">¿Cómo leer este mapa?</button>
+                </li>
+                <li class="nav-item spacer-20"> </li>
+                <li class="nav-item"></li>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#poll">Descargar App</button>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="poll" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Hola 👋 ¿Te gustaría una app?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p class="m-3">Si crees que te sería de utilidad que existiera una app con información del agua, ayúdanos a responder una pequeña encuesta.</p>
+            <button type="button" class="btn btn-dark m-3">Participar</button>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,100 @@
+<!-- templates/yourapp/mapbox_map.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Aguas con el agua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Bootstrap CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Mapbox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+
+    {% include '_shared_css.html' %}
+</head>
+<body>
+    {% with active_tab="by-source" %}
+        {% include '_shared_navbar.html' %}
+    {% endwith %}
+
+    <!-- Map container -->
+    <div id='map' style='width: 100%; height: calc(100vh - 56px);'></div>
+
+    <!-- Bootstrap JS and Mapbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+    
+    <!-- Initialize the map with your Mapbox access token -->
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoidmlkcmlsb2NvIiwiYSI6Ik1QRzIwZmcifQ.BzdjvFURAZ8uJ6kNovrrDA';
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [-99.133209, 19.432608],
+            zoom: 12
+        });
+
+        map.on('load', () => {
+            loadWaterPointsInMap("by-source");
+        });
+
+        {% include '_shared_icons.html' %}
+    </script>
+
+    {% include '_shared_water_points.html' %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="legend" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Fuentes de abastecimiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="m-3">El mapa muestra de donde viene el agua que consume cada colonia en la Ciudad de México de acuerdo al siguiente esquema: </p>
+                    <div class="container mt-4">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <img src="{% static 'images/cutzamala.png' %}" alt="Cutzamala" class="item-icon">
+                                Cutzamala
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{% static 'images/cutzamala-pozos.png' %}" alt="Cutzamala y Pozos" class="item-icon">
+                                Cutzamala y Pozos
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{% static 'images/pozos.png' %}" alt="Pozos" class="item-icon">
+                                Pozos
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{% static 'images/manantiales.png' %}" alt="Manantiales" class="item-icon">
+                                Manantiales
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{% static 'images/manantiales-pozos.png' %}" alt="Manantiales y Pozos" class="item-icon">
+                                Manantiales y Pozos
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{% static 'images/pipas.png' %}" alt="Pipas" class="item-icon">
+                                Pipas
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{% static 'images/rios.png' %}" alt="Rios" class="item-icon">
+                                Rios
+                            </li>
+                            <!-- Add more list items as needed -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

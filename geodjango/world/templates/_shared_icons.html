@@ -1,0 +1,60 @@
+{% load static %}
+
+function loadWaterPointsInMap(mode) {
+    // Get the settlements from the DOM
+    var settlements = document.getElementById('water-points').children;
+
+    // Iterate over each settlement
+    for (var i = 0; i < settlements.length; i++) {
+        var settlement = settlements[i];
+
+        // Get the settlement's name and coordinates
+        var id = settlement.getAttribute('data-id');
+
+        var name = settlement.getAttribute('data-name');
+        var coordinates = [settlement.getAttribute('data-coordinates-lng'), settlement.getAttribute('data-coordinates-lat')];
+        var dataSource = settlement.getAttribute('data-source');
+        var disrupted = settlement.getAttribute('data-disrupted') == 'True';
+        var customMarkerElement = document.createElement('div');
+        customMarkerElement.className = 'custom-marker';
+
+        if(mode == "by-source") {
+            customMarkerElement.innerHTML = getIconForWaterOrigin(dataSource);
+        } else {
+            customMarkerElement.innerHTML = getIconForDisruption(disrupted);
+        }
+
+        // Create a new marker for the settlement
+        new mapboxgl.Marker({ element: customMarkerElement })
+            .setLngLat(coordinates)
+            .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML('<div class="description"><h3>' + name + '</h3></div>'))
+            .addTo(map);
+    }
+}
+
+function getIconForDisruption(disrupted) {
+    if (disrupted) {
+        return '<img src="{% static 'images/no-water.png' %}" alt="Custom Marker">';
+    } else {
+        return '<img src="{% static 'images/water.png' %}" alt="Custom Marker">';
+    }
+}
+
+function getIconForWaterOrigin(source) {
+    if (source == "POZOS") {
+        return '<img src="{% static 'images/pozos.png' %}" alt="Custom Marker">';
+    } else if (source == "CUTZAMALA - POZOS") {
+        return '<img src="{% static 'images/cutzamala-pozos.png' %}" alt="Custom Marker">';
+    } else if (source == "CUTZAMALA") {
+        return '<img src="{% static 'images/cutzamala.png' %}" alt="Custom Marker">';
+    } else if (source == "PIPAS") {
+        return '<img src="{% static 'images/pipas.png' %}" alt="Custom Marker">';
+    } else if (source == "RIOS") {
+        return '<img src="{% static 'images/rios.png' %}" alt="Custom Marker">';
+    } else if (source == "MANANTIALES") {
+        return '<img src="{% static 'images/manantiales.png' %}" alt="Custom Marker">';
+    } else if (source == "MANANTIALES - POZOS") {
+        return '<img src="{% static 'images/manantiales-pozos.png' %}" alt="Custom Marker">';
+    }
+}
