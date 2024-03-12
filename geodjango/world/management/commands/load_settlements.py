@@ -2,6 +2,7 @@ from csv import DictReader
 from django.core.management import BaseCommand
 from django.contrib.gis.geos import Point
 import requests
+import datetime
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 # Import the model 
@@ -39,6 +40,7 @@ class Command(BaseCommand):
                 hours_of_service = data['hours_of_service']
 
             Settlement(
+                day_measured = datetime.date.today(),
                 identifier = id,
                 settlement = data['settlement'],
                 municipality = data['municipality'],
