@@ -2,4 +2,4 @@ psycopg2
 Django
 geojson
 requests
-selenium
+django-crontab

@@ -7,7 +7,8 @@ WORKDIR /usr/src/app
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         build-essential \
-        python3-gdal
+        python3-gdal \
+        cron
 
 COPY requirements.txt ./
 RUN pip install --upgrade pip && pip install -r requirements.txt

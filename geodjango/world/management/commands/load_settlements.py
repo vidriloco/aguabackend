@@ -21,8 +21,6 @@ class Command(BaseCommand):
             'Sec-Fetch-Dest': 'empty',
             'Referer': 'https://aguaentucolonia.sacmex.cdmx.gob.mx/'
         }
-        
-        Settlement.objects.all().delete()
 
         # make a call to retrieve the data from the url below replacing the id from 0 up to 2243
         for id in range(1, 2244):

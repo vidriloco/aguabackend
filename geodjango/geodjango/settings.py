@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'world',
+    'django_crontab'
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'geodjango.wsgi.application'
 
+CRONJOBS = [
+    ('*/15 * * * *', 'django.core.management.call_command', ['load_settlements'], {'verbosity': 0}, '> /usr/src/app/output.txt'),
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
