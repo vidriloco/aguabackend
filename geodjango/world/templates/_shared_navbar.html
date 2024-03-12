@@ -25,6 +25,10 @@
                 <li class="nav-item"></li>
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#poll"><i class="bi bi-phone-fill"></i> Descargar App</button>
                 </li>
+                <li class="nav-item spacer-20"> </li>
+                <li class="nav-item"></li>
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#more">Acerca de</button>
+                </li>
             </ul>
         </div>
       </div>
@@ -33,18 +37,42 @@
 
 <!-- Modal -->
 <div class="modal fade" id="poll" tabindex="-1" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">¿Te latería una app con esta información?</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p class="m-3">Si crees que te sería de utilidad que existiera una app con información del agua, ayúdanos respondiendo una pequeña encuesta.</p>
-            <div class="text-center">
-              <a class="m-3 btn btn-primary" href="https://tally.so/r/m67JJP" target="_blank" role="button">Participar</a>
-            </div>
-        </div>
-    </div>
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¿Te latería una app con esta información?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p class="m-3">Si crees que te sería de utilidad que existiera una app con información del agua, ayúdanos respondiendo una pequeña encuesta.</p>
+              <div class="text-center">
+                <a class="m-3 btn btn-primary" href="https://tally.so/r/m67JJP" target="_blank" role="button">Participar</a>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="more" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Acerca de este sitio</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p class="m-3">Somos un grupo de personas a quienes les gusta hacer apps para visibilizar problemas urbanos y proponer soluciones desde la tecnología.</p>
+              <p class="m-3">Siguenos en nuestras redes sociales para conocer otros proyectos como este.
+              <div class="list-group m-3">
+                <a href="https://twitter.com/AppsDelBarrio" target="_blank" class="list-group-item list-group-item-action" aria-current="true">
+                  <i class="bi bi-twitter"></i><span class="ms-3">Twitter / X</span>
+                </a>
+                <a href="https://www.instagram.com/appsdelbarrio" target="_blank" class="list-group-item list-group-item-action">
+                  <i class="bi bi-instagram"></i><span class="ms-3">Instagram</span>
+                </a>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
