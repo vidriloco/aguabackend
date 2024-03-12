@@ -1,5 +1,7 @@
 {% load static %}
 
+var markers = {};
+
 function loadWaterPointsInMap(mode) {
     // Get the settlements from the DOM
     var settlements = document.getElementById('water-points').children;
@@ -18,18 +20,66 @@ function loadWaterPointsInMap(mode) {
         var customMarkerElement = document.createElement('div');
         customMarkerElement.className = 'custom-marker';
 
+        var secondSectionSubtitle = "";
+        var secondSectionTitle = "Estado actual: ";
         if(mode == "by-source") {
             customMarkerElement.innerHTML = getIconForWaterOrigin(dataSource);
+            secondSectionSubtitle = dataSource;
+            secondSectionTitle = "Origen: ";
         } else {
             customMarkerElement.innerHTML = getIconForDisruption(disrupted);
+            secondSectionSubtitle = disrupted ? "Sin agua" : "Con agua";
         }
+        
+        var popup = new mapboxgl.Popup({ offset: 25, id: id })
+        popup.setHTML('<div class="container mt-4"><ul class="list-group"><li class="list-group-item"><b>Colonia: </b>' + name + '</li><li class="list-group-item"><b>' + secondSectionTitle + '</b>' + secondSectionSubtitle + '</li></ul></div>');
 
         // Create a new marker for the settlement
-        new mapboxgl.Marker({ element: customMarkerElement })
+        var marker = new mapboxgl.Marker({ element: customMarkerElement })
             .setLngLat(coordinates)
-            .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML('<div class="description"><h3>' + name + '</h3></div>'))
+            .setPopup(popup)
             .addTo(map);
+
+        markers[id] = {
+            coordinates: coordinates
+        };
+        
+        marker.getElement().id = id;
+        marker.getElement().addEventListener('click', function () {
+            var center = markers[this.id].coordinates;
+            var radius = 500;
+            var options = {steps: 100, units: 'meters', properties: {}};
+            var circle = turf.circle(center, radius, options);
+
+            var layerId = 'circle-layer-'+this.id;
+            map.addSource(layerId, {
+                type: 'geojson',
+                data: circle
+            });
+            
+            markers[this.id].layerId = layerId;
+
+            map.addLayer({
+                'id': layerId,
+                'type': 'fill',
+                'source': layerId,
+                'layout': {},
+                'paint': {
+                    'fill-color': '#0080ff',
+                    'fill-opacity': 0.5
+                }
+            });
+        });
+
+        popup.on('close', function() {
+            var layerId = markers[this.options['id']].layerId;
+            
+            if(map.getLayer(layerId) != null) {
+                map.removeLayer(layerId);
+                map.removeSource(layerId);
+            }
+            
+        });
     }
 }
 
