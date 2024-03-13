@@ -23,8 +23,6 @@
 
     <!-- Mapbox CSS -->
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
-    
-    {% include '_shared_css.html' %}
 
     <link rel="canonical" href="http://aguasconelagua.mx/colonias-afectadas" />
 
@@ -37,6 +35,9 @@
     <meta name="twitter:description" content="Descubre las colonias afectadas por la escasez de agua en tu área. Mantente informado sobre los problemas de suministro de agua en tu comunidad.">
     <meta name="twitter:image" content="http://aguasconelagua.mx/static/images/colonias-afectadas.jpg">
     <meta name="twitter:card" content="summary_large_image">
+
+    {% include '_shared_css.html' %}
+    {% include '_shared_ga.html' %}
 </head>
 <body>
     {% with active_tab="disruption" %}
