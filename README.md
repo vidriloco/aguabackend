@@ -27,3 +27,9 @@ python3 manage.py migrate world 0010 will undo the migration starting with 0010
 ### Show the available migrations
 
 python3 manage.py showmigrations world
+
+### Update the dataset every once and then
+
+By running the following command, the load_settlements command will be run according to the spec given in schedule_jobs file
+
+python3 manage.py schedule_jobs
