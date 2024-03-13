@@ -46,7 +46,7 @@ class Command(BaseCommand):
 
     scheduler.add_job(
       update_settlements,
-      trigger=CronTrigger(hour="00"),
+      trigger=CronTrigger(hour="5"),
       id="load_settlements",
       max_instances=1,
       replace_existing=False,
