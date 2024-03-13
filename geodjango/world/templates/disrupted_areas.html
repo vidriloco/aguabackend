@@ -3,11 +3,12 @@
 <html>
 <head>
     {% load static %}
-    <meta name="description" content="Descubre las colonias afectadas por la escasez de agua en tu área en este mapa interactivo. Mantente informado sobre los problemas de suministro de agua en tu localidad. ¡Visita Aguas con el Agua MX ahora!">
+    <meta charset="utf-8">
     
     <title>Colonias Afectadas por Falta de Agua | Aguas con el Agua MX</title>
-    
-    <meta name="keywords" content="Mapa interactivo de las colonias afectadas por falta de agua, Problemas de suministro de agua, Escasez de agua en colonias, Información de cuadrantes sobre falta de agua en mapa interactivo">
+
+    <meta name="description" content="Descubre las colonias afectadas por la escasez de agua en tu área en este mapa interactivo. Mantente informado sobre los problemas de suministro de agua en tu localidad. ¡Visita Aguas con el Agua MX ahora!">
+    <meta name="keywords" content="Mapa interactivo de las colonias afectadas por falta de agua, Cuenca del valle de México, Humedales, Sistema Cutzamala, Manantiales, Pipas, Rios y canales, Problemas de suministro de agua, Escasez de agua en colonias, Información de cuadrantes sobre falta de agua en mapa interactivo">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
@@ -28,16 +29,16 @@
     <link rel="canonical" href="http://aguasconelagua.mx/colonias-afectadas" />
 
     <meta property="og:title" content="Mapa interactivo con las colonias afectadas por falta de agua | Aguas con el Agua MX">
-    <meta property="og:description" content="Descubre las colonias afectadas por la escasez de agua en tu área. Mantente informado sobre los problemas de suministro de agua en tu comunidad. ¡Visita Aguas con el Agua MX ahora!">
+    <meta property="og:description" content="Descubre las colonias afectadas por la escasez de agua en tu área. Mantente informado sobre los problemas de suministro de agua en tu comunidad.">
     <meta property="og:image" content="http://aguasconelagua.mx/static/images/colonias-afectadas.jpg">
     <meta property="og:url" content="http://aguasconelagua.mx/colonias-afectadas">
 
     <meta name="twitter:title" content="Mapa interactivo con las colonias afectadas por falta de agua | Aguas con el Agua MX">
-    <meta name="twitter:description" content="Descubre las colonias afectadas por la escasez de agua en tu área. Mantente informado sobre los problemas de suministro de agua en tu comunidad. ¡Visita Aguas con el Agua MX ahora!">
+    <meta name="twitter:description" content="Descubre las colonias afectadas por la escasez de agua en tu área. Mantente informado sobre los problemas de suministro de agua en tu comunidad.">
     <meta name="twitter:image" content="http://aguasconelagua.mx/static/images/colonias-afectadas.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
-    <img src="{% static 'images/colonias-afectadas.jpg' %}" alt="Mapa interactivo con las colonias afectadas por falta de agua" class="item-icon">
+    <img style="visibility: hidden" src="{% static 'images/colonias-afectadas.jpg' %}" alt="Mapa interactivo con las colonias afectadas por falta de agua" class="item-icon">
 </head>
 <body>
     {% with active_tab="disruption" %}
