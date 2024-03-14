@@ -17,6 +17,7 @@ function loadWaterPointsInMap(mode) {
         var coordinates = [settlement.getAttribute('data-coordinates-lng'), settlement.getAttribute('data-coordinates-lat')];
         var dataSource = settlement.getAttribute('data-source');
         var disrupted = settlement.getAttribute('data-disrupted') == 'True';
+        var hoursOfService = settlement.getAttribute('data-hours-of-service') == 'No disponible' ? 'Sin suministro de agua' : settlement.getAttribute('data-hours-of-service');
         var customMarkerElement = document.createElement('div');
         customMarkerElement.className = 'custom-marker';
 
@@ -32,7 +33,7 @@ function loadWaterPointsInMap(mode) {
         }
         
         var popup = new mapboxgl.Popup({ offset: 25, id: id })
-        popup.setHTML('<div class="container mt-4"><ul class="list-group"><li class="list-group-item"><b>Colonia: </b>' + name + '</li><li class="list-group-item"><b>' + secondSectionTitle + '</b>' + secondSectionSubtitle + '</li></ul></div>');
+        popup.setHTML('<div class="container mt-4"><ul class="list-group"><li class="list-group-item"><b>Colonia: </b>' + name + '</li><li class="list-group-item"><b>' + secondSectionTitle + '</b>' + secondSectionSubtitle + '</li><li class="list-group-item">' + hoursOfService + '</li></ul></div>');
 
         // Create a new marker for the settlement
         var marker = new mapboxgl.Marker({ element: customMarkerElement })
