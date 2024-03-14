@@ -16,10 +16,8 @@ logger = logging.getLogger(__name__)
 def update_settlements():
   try:
     call_command('load_settlements')
-    self.stdout.write(self.style.SUCCESS('Successfully called another command'))
   except CommandError as e:
-    self.stderr.write(self.style.ERROR(f'Error calling another command: {e}'))
-
+    pass
 
 # The `close_old_connections` decorator ensures that database connections, that have become
 # unusable or are obsolete, are closed before and after your job has run. You should use it
